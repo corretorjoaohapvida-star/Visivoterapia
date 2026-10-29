@@ -62,3 +62,15 @@
   q('track', 'PageView');
   q('track', 'ViewContent', { currency: 'EUR', value: 10, content_name: 'Visual Therapy Atlas' });
 })();
+
+(function () {
+  function updateDate() {
+    var node = document.getElementById("atlas-current-date");
+    if (!node) return;
+    var now = new Date();
+    node.textContent = new Intl.DateTimeFormat("it-IT", {timeZone:"Europe/Rome", day:"2-digit",month:"2-digit",year:"numeric"}).format(now);
+    node.dateTime = new Intl.DateTimeFormat("en-CA", {timeZone:"Europe/Rome",year:"numeric",month:"2-digit",day:"2-digit"}).format(now);
+  }
+  updateDate();
+  setInterval(updateDate, 60000);
+})();
